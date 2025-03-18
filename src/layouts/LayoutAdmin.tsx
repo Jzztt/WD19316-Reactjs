@@ -7,7 +7,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu } from 'antd';
-import { NavLink } from 'react-router';
+import { NavLink, Outlet } from 'react-router';
 
 const { Header, Sider, Content } = Layout;
 
@@ -17,7 +17,7 @@ const LayoutAdmin: React.FC = () => {
     {
       key: '1',
       icon: <MenuOutlined />,
-      label: 'DashBoard',
+      label: <NavLink to={"/"}>DashBoard</NavLink>,
     },
     {
       key: '2',
@@ -64,7 +64,8 @@ const LayoutAdmin: React.FC = () => {
             borderRadius: 3,
           }}
         >
-          Content
+          {/* Content */}
+         <Outlet/>
         </Content>
       </Layout>
     </Layout>
