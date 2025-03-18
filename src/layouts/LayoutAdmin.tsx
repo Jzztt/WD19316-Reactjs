@@ -1,44 +1,45 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import {
   MenuFoldOutlined,
+  MenuOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
+  ProductOutlined,
   UserOutlined,
-  VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, theme } from 'antd';
+import { Button, Layout, Menu } from 'antd';
+import { NavLink } from 'react-router';
 
 const { Header, Sider, Content } = Layout;
 
 const LayoutAdmin: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-
+  const items = [
+    {
+      key: '1',
+      icon: <MenuOutlined />,
+      label: 'DashBoard',
+    },
+    {
+      key: '2',
+      icon: <ProductOutlined/>,
+      label:  <NavLink to={"/product"}>Product</NavLink>,
+    },
+    {
+      key: '3',
+      icon: <UserOutlined />,
+      label: <NavLink to={"/user"}>User</NavLink>,
+    },
+  ]
 
   return (
-    <Layout>
+    <Layout style={{minHeight: '100vh'}}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
           mode="inline"
           defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
-            },
-          ]}
+          items={items}
         />
       </Sider>
       <Layout style={{ minHeight: '100vh' }}>
