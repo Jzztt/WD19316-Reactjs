@@ -9,7 +9,7 @@ const Products = () => {
     return data;
   };
   const { data: dataSource, isLoading } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products"], // caching
     queryFn: fetchProducts,
   });
   const columns = [
