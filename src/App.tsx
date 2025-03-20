@@ -4,6 +4,7 @@ import LayoutAdmin from "./layouts/LayoutAdmin";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Users from "./pages/Users";
+import CreateProduct from "./pages/CreateProduct";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<LayoutAdmin />}>
           <Route index element={<Dashboard />} />
           <Route path="product" element={<Products />} />
+          <Route path="product/create" element={<CreateProduct/>} />
           <Route path="user" element={<Users />} />
         </Route>
       </Routes>

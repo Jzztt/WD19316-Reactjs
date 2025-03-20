@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "antd";
+import { Button, Table } from "antd";
 import axios from "axios";
+import { NavLink } from "react-router";
 
 const Products = () => {
   const fetchProducts = async () => {
@@ -13,30 +14,33 @@ const Products = () => {
   });
   const columns = [
     {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
     },
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
     },
     {
-      title: 'Description',
-      dataIndex: 'description',
-      key: 'description',
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
     },
   ];
 
   return (
     <>
-      <Table dataSource={dataSource} columns={columns} loading={isLoading} />;
+      <Button type="primary">
+        <NavLink to={"/product/create"}>Create product</NavLink>
+      </Button>
+      <Table dataSource={dataSource} columns={columns} loading={isLoading} />
     </>
   );
 };
