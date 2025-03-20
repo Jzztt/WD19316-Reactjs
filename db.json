@@ -5,19 +5,6 @@
       "name": "Iphone",
       "price": 10000,
       "description": "Iphone 13 Pro Max"
-    },
-    {
-      "id": 2,
-      "name": "Samsung",
-      "price": 240000,
-      "description": "Samsung S25 Ultra"
-    },
-    {
-      "name": "asus",
-      "price": 9999,
-      "description": "no description",
-      "category": "Laptop",
-      "id": 3
     }
   ]
 }

@@ -3,7 +3,8 @@ import { Button, Form, Input, InputNumber, Select } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-interface IProduct {
+export interface IProduct {
+  id?: number;
   name: string;
   price: number;
   description: string;
