@@ -1,7 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber, Select } from "antd";
 import axios from "axios";
-import { useState } from "react";
 import { useNavigate } from "react-router";
 
 interface IProduct {
@@ -45,16 +44,16 @@ const CreateProduct = () => {
           layout="vertical"
           style={{ width: "600px" }}
         >
-          <Form.Item name="name" label="Name">
+          <Form.Item name="name" label="Name" rules={[{required: true, message: "Please input your name!"}]}>
             <Input />
           </Form.Item>
-          <Form.Item name="price" label="Price">
+          <Form.Item name="price" label="Price" rules={[{required: true, message: "Please input your price!"}]}>
             <InputNumber style={{ width: "100%" }} />
           </Form.Item>
           <Form.Item name="description" label="Description">
             <Input />
           </Form.Item>
-          <Form.Item name="category" label="Category">
+          <Form.Item name="category" label="Category" rules={[{required: true, message: "Please input your category!"}]}>
             <Select placeholder="Select a category">
               <Option value="Laptop">Laptop</Option>
               <Option value="SmartPhone">SmartPhone</Option>
