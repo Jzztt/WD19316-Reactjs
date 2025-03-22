@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { IProduct } from "./CreateProduct";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber, Select } from "antd";
 
 
@@ -10,6 +10,7 @@ const EditProduct = () => {
   const { id } = useParams();
   const { Option } = Select;
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   const fetchProduct = async () => {
     try {
@@ -32,16 +33,34 @@ const EditProduct = () => {
     form.setFieldsValue(product);
   },[product,form]);
 
-  if (isLoading) return <div>Loading...</div>;
-
   // gửi dữ liệu đi thi dùng useMutation
+  const editProduct = async (product: IProduct) => {
+    try {
+      const { data } = await axios.put(`http://localhost:3000/products/${id}`, product);
+      return data;
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
+  const mutationEditProduct = useMutation({
+    mutationFn: editProduct,
+    onSuccess: () => {
+      navigate("/product")
+    }
+  })
+  const handleSubmit = (values: IProduct) => {
+    mutationEditProduct.mutate(values);
+  }
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Form
           form={form}
-          // onFinish={handleSubmit}
+          onFinish={handleSubmit}
           layout="vertical"
           style={{ width: "600px" }}
         >
