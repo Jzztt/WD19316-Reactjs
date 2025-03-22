@@ -58,7 +58,9 @@ const Products = () => {
       key: "action",
       render: (record: IProduct) => (
         <div>
-          <Button type="primary"> Edit</Button>
+          <Button type="primary">
+            <NavLink to={`/product/edit/${record.id}`}>Edit</NavLink>
+          </Button>
           <Popconfirm
             title="Are you sure?"
             onConfirm={() => mutation.mutate(record.id as number)}

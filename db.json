@@ -4,7 +4,8 @@
       "id": 1,
       "name": "Iphone",
       "price": 10000,
-      "description": "Iphone 13 Pro Max"
+      "description": "Iphone 13 Pro Max",
+      "category": "SmartPhone"
     }
   ]
 }
