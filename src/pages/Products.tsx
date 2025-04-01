@@ -3,9 +3,12 @@ import { Button, Popconfirm, Table } from "antd";
 import axios from "axios";
 import { NavLink } from "react-router";
 import { IProduct } from "./CreateProduct";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeProvider";
 
 const Products = () => {
   const queryClient = useQueryClient();
+  const { theme } = useContext(ThemeContext);
   const fetchProducts = async () => {
     const { data } = await axios.get("http://localhost:3000/products");
     return data;
@@ -77,6 +80,8 @@ const Products = () => {
 
   return (
     <>
+      <p>{theme}</p>
+
       <Button type="primary">
         <NavLink to={"/product/create"}>Create product</NavLink>
       </Button>
