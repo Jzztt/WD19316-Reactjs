@@ -6,6 +6,7 @@ import Products from "./pages/Products";
 import Users from "./pages/Users";
 import CreateProduct from "./pages/CreateProduct";
 import EditProduct from "./pages/EditProduct";
+import LifeCycleComponent from "./pages/LifeCycleComponent";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="product/create" element={<CreateProduct />} />
           <Route path="product/edit/:id" element={<EditProduct />} />
           <Route path="user" element={<Users />} />
+          <Route path="life-cycle" element={<LifeCycleComponent />} />
         </Route>
       </Routes>
     </>

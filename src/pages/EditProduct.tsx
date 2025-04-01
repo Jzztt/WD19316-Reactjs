@@ -33,7 +33,6 @@ const EditProduct = () => {
     form.setFieldsValue(product);
   },[product,form]);
 
-  // gửi dữ liệu đi thi dùng useMutation
   const editProduct = async (product: IProduct) => {
     try {
       const { data } = await axios.put(`http://localhost:3000/products/${id}`, product);
@@ -43,6 +42,7 @@ const EditProduct = () => {
     }
   }
 
+  // gửi dữ liệu đi thi dùng useMutation
   const mutationEditProduct = useMutation({
     mutationFn: editProduct,
     onSuccess: () => {
