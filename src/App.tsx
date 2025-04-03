@@ -8,6 +8,7 @@ import CreateProduct from "./pages/CreateProduct";
 import EditProduct from "./pages/EditProduct";
 import LifeCycleComponent from "./pages/LifeCycleComponent";
 import LearReducer from "./pages/LearReducer";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="life-cycle" element={<LifeCycleComponent />} />
           <Route path="learn-reducer" element={<LearReducer />} />
         </Route>
+        <Route path="register" element={<Register />} />
       </Routes>
     </>
   );
