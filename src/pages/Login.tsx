@@ -4,31 +4,32 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router";
 
-interface IRegisterPayload{
-  username: string;
+interface ILoginPayload {
   email: string;
   password: string;
 }
-const Register = () => {
+const Login = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
-  const register = async (payload: IRegisterPayload) => {
+  const login = async (payload: ILoginPayload) => {
     try {
-      const { data } = await axios.post("http://localhost:3000/register", payload);
-      return data;
+      const { data } = await axios.post("http://localhost:3000/login", payload);
+      return data.accessToken;
     } catch (error) {
-      console.log(error);
+      throw new Error(error as string);
     }
   };
-  const mutationRegister = useMutation({
-    mutationFn: register,
-    onSuccess:() => {
-      navigate('/login')
-    }
-  })
-  const handleRegister = (values: IRegisterPayload) => {
-    mutationRegister.mutate(values);
+  const mutationLogin = useMutation({
+    mutationFn: login,
+    onSuccess: (data) => {
+      localStorage.setItem("accessToken", data);
+      navigate("/");
+    },
+    onError: (error) => alert(error),
+  });
+  const handleLogin = (values: ILoginPayload) => {
+    mutationLogin.mutate(values);
   };
   return (
     <>
@@ -41,17 +42,8 @@ const Register = () => {
         }}
       >
         <Card variant="outlined" style={{ width: 400 }}>
-          <h1 style={{ textAlign: "center" }}>Register Form</h1>
-          <Form form={form} onFinish={handleRegister} layout="vertical">
-            <Form.Item
-              label="username"
-              name="username"
-              rules={[
-                { required: true, message: "Please input your username!" },
-              ]}
-            >
-              <Input />
-            </Form.Item>
+          <h1 style={{ textAlign: "center" }}>Login Form</h1>
+          <Form form={form} onFinish={handleLogin} layout="vertical">
             <Form.Item
               label="email"
               name="email"
@@ -80,4 +72,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
