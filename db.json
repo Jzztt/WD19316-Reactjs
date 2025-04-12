@@ -1,5 +1,12 @@
 {
-  "products": [],
+  "products": [
+    {
+      "name": "Sam sung",
+      "price": 111111,
+      "category": "Laptop",
+      "id": 1
+    }
+  ],
   "users": [
     {
       "email": "admin@gmail.com",

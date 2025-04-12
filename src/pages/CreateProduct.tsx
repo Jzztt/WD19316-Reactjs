@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Button, Form, Input, InputNumber, Select } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import instanceAxios from "../utils/instanceAxios";
 
 export interface IProduct {
   id?: number;
@@ -16,8 +17,8 @@ const CreateProduct = () => {
   const [form] = Form.useForm();
   const createProduct = async (product: IProduct) => {
     try {
-      const { data } = await axios.post(
-        "http://localhost:3000/products",
+      const { data } = await instanceAxios.post(
+        "/products",
         product
       );
       return data;

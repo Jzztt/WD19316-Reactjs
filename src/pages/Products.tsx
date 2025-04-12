@@ -5,12 +5,13 @@ import { NavLink } from "react-router";
 import { IProduct } from "./CreateProduct";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeProvider";
+import instanceAxios from "../utils/instanceAxios";
 
 const Products = () => {
   const queryClient = useQueryClient();
   const { theme } = useContext(ThemeContext);
   const fetchProducts = async () => {
-    const { data } = await axios.get("http://localhost:3000/products");
+    const { data } = await instanceAxios.get("http://localhost:3000/products");
     return data;
   };
   const { data: dataSource, isLoading } = useQuery({
